@@ -1,4 +1,3 @@
-package assignment8;
 
 import jssc.*;
 
