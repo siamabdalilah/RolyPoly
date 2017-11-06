@@ -26,10 +26,38 @@ public class SerialComm {
 	}
 		
 	// TODO: Add writeByte() method from Studio 5
+	public void writeByte(byte singleByte)
+	{
+		//byte singleByte = ap.nextByte();
+		try {
+			port.writeByte(singleByte);
+		} catch (SerialPortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (debug)
+			System.out.println(singleByte);
+	}
 	
 	// TODO: Add available() method
-	
+	public boolean available() {
+		try {
+			if(port.getInputBufferBytesCount()!=-1)
+				return true;
+			else
+				return false;
+		} catch (SerialPortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 	// TODO: Add readByte() method	
+	public void readByte() throws SerialPortException {
+		byte[] c = new byte[1];
+		c = port.readBytes(1);
+		System.out.println((char) c[0]);
+	}
 	
 	// TODO: Add a main() method
 }
