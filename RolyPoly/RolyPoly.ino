@@ -23,6 +23,7 @@ int frameCount = 0;
 unsigned long frameTime = 0;
 unsigned long pmoveTime = 0;
 unsigned long gameTime = 0;
+unsigned long pdmoveTime = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -76,7 +77,7 @@ void loop()
   }
 
   //check for move - predator
-  if (Serial.available() > 0)
+  if (Serial.available() > 0)// && millis() - pdmoveTime > 2 * moveRate)
   {
     char c = Serial.read();
     switch (c)
